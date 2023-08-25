@@ -1,0 +1,26 @@
+- name: Remove old versions of Docker
+  become: true
+  ansible.builtin.apt:
+    name:
+      - docker
+      - docker.io
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: absent
+
+- name: Add Docker repository
+  become: true
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    state: present
+
+- name: Install Docker
+  become: true
+  ansible.builtin.apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-compose
+    state: latest

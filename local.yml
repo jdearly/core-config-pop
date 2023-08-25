@@ -1,0 +1,24 @@
+- hosts: localhost
+  pre_tasks:
+    - name: Update APT package cache
+      become: true
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Upgrade all packages
+      become: true
+      ansible.builtin.apt:
+        upgrade: dist
+
+    - name: Autoremove unneeded packages installed as dependencies
+      become: true
+      ansible.builtin.apt:
+        autoremove: yes
+
+  tasks:
+    - include: tasks/core.yml
+    - include: tasks/zsh.yml
+    - include: tasks/dotfiles.yml
+    - include: tasks/nvim.yml
+      #- include: tasks/docker.yml
+      #- include: tasks/kde.yml
