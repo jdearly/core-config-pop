@@ -22,11 +22,11 @@
     dest: ~/.zshrc
     state: link
 
-# - name: Create nvim symbolic link
-#   ansible.builtin.file:
-#     src: ~/dotfiles/nvim
-#     dest: ~/.config/nvim
-#     state: link
+- name: Create nvim symbolic link
+  ansible.builtin.file:
+    src: ~/dotfiles/kickstart.nvim
+    dest: ~/.config/nvim
+    state: link
 
 - name: Create i3 symbolic link
   ansible.builtin.file:
