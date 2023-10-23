@@ -17,7 +17,8 @@
 
   tasks:
     - include: tasks/core.yml
-    - include: tasks/zsh.yml
+    #- include: tasks/zsh.yml
+    - include: tasks/bash.yml
     - include: tasks/dotfiles.yml
     - include: tasks/nvim.yml
       #- include: tasks/docker.yml

@@ -11,15 +11,27 @@
     - install
     - dotfiles
 
-- name: Remove standard .zshrc
+- name: Remove standard .bashrc
   ansible.builtin.file:
-    path: ~/.zshrc
+    path: ~/.bashrc
     state: absent
 
-- name: Create .zshrc symbolic link
+- name: Create .bashrc symbolic link
   ansible.builtin.file:
-    src: ~/dotfiles/zsh/.zshrc
-    dest: ~/.zshrc
+    src: ~/dotfiles/bash/.bashrc
+    dest: ~/.bashrc
+    state: link
+
+- name: Create git-prompt symbolic link
+  ansible.builtin.file:
+    src: ~/dotfiles/bash/git-prompt.sh
+    dest: ~/git-prompt.sh
+    state: link
+
+- name: Create git-completion symbolic link
+  ansible.builtin.file:
+    src: ~/dotfiles/bash/git-completion.bash
+    dest: ~/git-completion.bash
     state: link
 
 - name: Create nvim symbolic link
